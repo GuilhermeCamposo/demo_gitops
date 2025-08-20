@@ -17,3 +17,22 @@
     state: present
     namespace: openshift-gitops
     resource_definition: "{{ lookup('template', 'argo-instance.yml.j2') }}"
+
+- name: Evaluate Apps Namespaces 
+  kubernetes.core.k8s:
+    api_key: '{{ token }}'
+    host: '{{ server }}'
+    validate_certs: false
+    api_version: v1
+    kind: Namespace
+    name: example-1
+    state: present
+
+- name: Evaluate ArgoCD Apps
+  kubernetes.core.k8s:
+    api_key: '{{ token }}'
+    host: '{{ server }}'
+    validate_certs: false
+    state: present
+    namespace: example-1
+    resource_definition: "{{ lookup('file', 'bgd-app.yaml') }}"    
