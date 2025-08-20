@@ -25,8 +25,11 @@
     validate_certs: false
     api_version: v1
     kind: Namespace
-    name: example-1
+    name: "{{ item }}"
     state: present
+  loop: 
+    - example-1
+    - example-2
 
 - name: Evaluate ArgoCD Apps
   kubernetes.core.k8s:
@@ -34,5 +37,8 @@
     host: '{{ server }}'
     validate_certs: false
     state: present
-    namespace: example-1
-    resource_definition: "{{ lookup('file', 'bgd-app.yaml') }}"    
+    namespace: openshift-gitops
+    resource_definition: "{{ lookup('file', item) }}"
+  loop: 
+    - 'bgd-app.yaml'
+    - 'bgdk-app.yaml'
