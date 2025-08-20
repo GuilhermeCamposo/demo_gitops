@@ -1,0 +1,32 @@
+= Trusted Application Pipeline Installation
+
+== Requirements
+
+- OCP 4.18
+- oc client >= 4.18
+- Minio client(https://min.io/docs/minio/linux/reference/minio-mc.html[mc]) in your local $PATH 
+- Helm client
+- Ansible With Kubernets module (https://docs.ansible.com/ansible/latest/collections/kubernetes/core/k8s_module.html#requirements[requirements])
+
+== What is available?
+
+. ArgoCD GitOps 1.17
+
+== TAP Installation
+
+=== Parameters
+
+[options="header"]
+|=======================
+| Parameter  | Example Value                                      | Definition
+| token      | sha256~vFanQbthlPKfsaldJT3bdLXIyEkd7ypO_XPygY1DNtQ | access token for a user with cluster-admin privileges
+| server     | https://api.mycluster.domain.com:6443              | OpenShift cluster API URL
+|=======================
+
+===  How to run the playbook
+
+----
+ansible-playbook -e token=${token} -e server=${server} playbook.yml
+----
+
+
