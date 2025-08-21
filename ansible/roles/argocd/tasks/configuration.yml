@@ -30,6 +30,7 @@
   loop: 
     - example-1
     - example-2
+    - example-3
 
 - name: Evaluate ArgoCD Apps
   kubernetes.core.k8s:
@@ -40,5 +41,6 @@
     namespace: openshift-gitops
     resource_definition: "{{ lookup('file', item) }}"
   loop: 
-    - 'bgd-app.yaml'
-    - 'bgdk-app.yaml'
+    - bgd-app.yaml
+    - bgdk-app.yaml
+    - bgd-app-helm.yaml
