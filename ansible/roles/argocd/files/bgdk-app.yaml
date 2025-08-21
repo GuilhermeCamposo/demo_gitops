@@ -4,7 +4,7 @@ metadata:
   name: bgdk-app
 spec:
   destination:
-    namespace: example-2
+    namespace: example-kustomize
     server: https://kubernetes.default.svc
   project: default
   source:

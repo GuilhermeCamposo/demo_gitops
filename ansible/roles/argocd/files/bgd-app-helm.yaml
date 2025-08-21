@@ -4,7 +4,7 @@ metadata:
   name: bgd-helm
 spec:
   destination:
-    namespace: example-3
+    namespace: example-helm
     server: 'https://kubernetes.default.svc'
   source:
     path: apps/bgd-helm-chart

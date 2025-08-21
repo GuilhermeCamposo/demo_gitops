@@ -28,9 +28,9 @@
     name: "{{ item }}"
     state: present
   loop: 
-    - example-1
-    - example-2
-    - example-3
+    - example
+    - example-kustomize
+    - example-helm
 
 - name: Evaluate ArgoCD Apps
   kubernetes.core.k8s:
