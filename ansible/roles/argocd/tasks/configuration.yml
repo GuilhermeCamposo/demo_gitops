@@ -41,6 +41,7 @@
     namespace: openshift-gitops
     resource_definition: "{{ lookup('file', item) }}"
   loop: 
+    - demo-project.yml
     - bgd-app.yaml
     - bgdk-app.yaml
     - bgd-app-helm.yaml
